@@ -1,0 +1,63 @@
+.visualization-timeline {
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 3px;
+    padding: 0.5rem;
+    .chart {
+        height: 100px;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr .5fr .5fr .5fr;
+        grid-template-areas:
+        "a a b c c"
+        "d d e f f"
+        ". . g h h";
+        min-height: 80%;
+        max-height: 80%;
+        .border {
+            border: 1px solid #C2C2C2;
+            text-align: center;
+            font-weight: 500;
+        }
+        .grid-item-1 {
+            grid-area: a;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .grid-item-2 {
+            grid-area: b;
+        }
+        .grid-item-3 {
+            grid-area: c;
+        }
+        .grid-item-4 {
+            grid-area: d;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .grid-item-5 {
+            grid-area: e;
+        }
+        .grid-item-6 {
+            grid-area: f;
+        }
+        .grid-item-7 {
+            grid-area: g;
+        }
+        .grid-item-8 {
+            grid-area: h;
+        }
+    }
+    .flex-container {
+        display: flex;
+        .flex-item1 {
+            width: 300px;
+        }
+        .flex-item2 {
+            flex-grow: 1;
+        }
+    }
+}

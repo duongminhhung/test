@@ -1,0 +1,14 @@
+.pie-chart {
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 3px;
+    padding: 0.5rem;
+    height: 100%;
+    .title {
+        text-transform: capitalize;
+        font-weight: 500;
+    }
+    .chart {
+        height: 200px;
+    }
+}

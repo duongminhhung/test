@@ -1,0 +1,21 @@
+.container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+    .item {
+        border: 1px solid #C2C2C2;
+        padding: .25rem .5rem;
+        font-size: .85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .title {
+        font-size: .85rem;
+        border: 1px solid #C2C2C2;
+        background-color: #EAEAEA;
+        padding: .25rem .5rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

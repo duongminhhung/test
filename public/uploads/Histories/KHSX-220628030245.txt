@@ -1,0 +1,118 @@
+- resrouce -> view -> stock -> index :
+<div class="flex justify-end mt-1">
+                <form id="exportForm" action="{{ route('stocks.export') }}" method="GET">
+                    <input type="hidden" name="material_id" value="{{ $filter['material_id'] ?? '' }}"
+                        class="w-32 px-3 py-2 text-gray-800 placeholder-gray-400 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:shadow-outline"
+                        placeholder="Nguyên vật liệu" />
+                    <input type="hidden" name="stock_id" value="{{ $filter['stock_id'] ?? '' }}"
+                        class="w-32 px-3 py-2 text-gray-800 placeholder-gray-400 border border-gray-400 rounded focus:border-transparent focus:outline-none focus:shadow-outline"
+                        placeholder="Nguyên vật liệu" />
+                    <a href="javascript:;" onclick="document.getElementById('exportForm').submit()"
+                        class="px-2 py-1 ml-1 overflow-hidden text-sm text-white bg-indigo-500 rounded cursor-pointer focus:outline-none focus:shadow-outline hover:bg-indigo-700 lg:text-base">
+                        Xuất excel
+                    </a>
+                </form>
+            </div>
+-Web :
+    Route::get('/stocks/file-export', [StockController::class, 'fileExport'])->name('stocks.export');
+- App -> export : 
+<?php
+
+namespace App\Exports;
+
+use App\Models\CellMaterials;
+use App\Models\Material;
+use App\Models\MaterialStock;
+use App\Models\MaterialStockRack;
+use App\Models\MaterialStockRackCell;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
+
+class StockExport implements FromCollection, WithHeadings, WithMapping
+{
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    protected $request;
+    protected $stt = 0;
+    protected $type = 1;
+    public function __construct($request)
+    {
+        $this->request = $request;
+    }
+    public function collection()
+    {
+        $filter = $this->request->query();
+        $query = CellMaterials::select('cell_materials.*')
+            ->join(
+                'material_stock_rack_cells',
+                'material_stock_rack_cells.id',
+                '=',
+                'cell_materials.stock_material_rack_cell_id'
+            )
+            ->join(
+                'material_stock_racks',
+                'material_stock_racks.id',
+                '=',
+                'material_stock_rack_cells.material_stock_rack_id'
+            )
+            ->join(
+                'material_stocks',
+                'material_stocks.id',
+                '=',
+                'material_stock_racks.material_stock_id'
+            );
+        if ($filter) {
+            if (isset($filter['material_id'])) {
+                $query = $query->where('cell_materials.material_id', $filter['material_id']);
+            }
+            if (isset($filter['stock_id'])) {
+                $query = $query->where('material_stocks.id', $filter['stock_id']);
+            }
+        }
+        $cellmat = $query->where('packNumber', '>', "0")->get();
+        // dd(collect($arr));
+        return $cellmat;
+    }
+
+    public function headings(): array
+    {
+        return [
+            'STT',
+            'Kho',
+            'Vị trí',
+            'Mã Nguyên vật liệu',
+            'Pallet',
+            'Số cuộn',
+            'Khối Lượng (kg)',
+        ];
+    }
+
+    public function map($cellmaterial): array
+    {
+        // dd($cellmaterial);
+        $stock_material_rack_cell = MaterialStockRackCell::where('is_deleted', false)->where('id', $cellmaterial->stock_material_rack_cell_id)->first();
+        $material_stock_rack = MaterialStockRack::where('is_deleted', false)->where('id', $stock_material_rack_cell->material_stock_rack_id)->first();
+        $material_stock = MaterialStock::where('is_deleted', false)->where('id', $material_stock_rack->material_stock_id)->first();
+        // dd($material_stock);
+        $this->stt = $this->stt + 1;
+        return [
+            $this->stt,
+            $material_stock->name,
+            $cellmaterial->stock_material_rack_cell_id,
+            $cellmaterial->material ? $cellmaterial->material->code : "",
+            $cellmaterial->pallet_id,
+            $cellmaterial->packNumber,
+            number_format($cellmaterial->spool_net_weight, 2),
+        ];
+    }
+}
+
+- app -> http -> controllers -> stockcontroller
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\StockExport;
+public function fileExport(Request $request)
+    {
+        return Excel::download(new StockExport($request), 'stock.xlsx');
+    }

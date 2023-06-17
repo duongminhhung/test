@@ -1,0 +1,38 @@
+@media print 
+{  
+	@page {  
+        size: 40mm 30mm;   
+    }
+
+    .head {
+        display: none;
+    }
+    .main-footer {
+        display: none;
+    }
+
+    #page img { 
+        /*width :50%; 
+        height:50%;
+        margin-top: 15px;
+        margin-bottom: 30px;
+        margin-left: 10px;*/
+        /*border-right: 2px solid black;*/
+    }
+
+    /*.my-div {
+        float: left;
+    }
+
+    .label {
+        margin-bottom: 2px 
+    }*/
+
+    .text-qr {
+        margin-left: 110px;
+        margin-top: -50% !important;
+        font-size: 50px;
+        float: left;        
+        transform: rotate(-90deg); 
+    }
+}

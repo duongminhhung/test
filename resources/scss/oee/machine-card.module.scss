@@ -1,0 +1,86 @@
+.machine-card {
+    border-radius: 3px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    overflow: hidden;
+    &-header {
+        text-align: center;
+        font-weight: 500;
+        background-color: white;
+        padding: 5px 0;
+    }
+    &-body {
+        background-color: #787878;
+        padding: 5px;
+        position: relative;
+        .percent {
+            text-align: center;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            color: white;
+            font-weight: 800;
+            font-size: 65px;
+            &[bg="green"] {
+                background-color: #20A551;
+            }
+            &[bg="orange"] {
+                background-color: #FCB73F;
+            }
+            &[bg="red"] {
+                background-color: #FB0D1B;
+            }
+        }
+        .info {
+            text-align: center;
+            font-weight: 500;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            &[bg="green"] {
+                background-color: #34FC7A;
+            }
+            &[bg="orange"] {
+                background-color: #FFCF7C;
+            }
+            &[bg="red"] {
+                background-color: #FF4B56;
+            }
+        }
+        &:hover {
+            .detail {
+                display: flex;
+            }
+        }
+        .detail {
+            position: absolute;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(10px);
+            background-color: rgba(black, 0.5);
+        }
+        .status {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(10px);
+            background-color: rgba(black, 0.5);
+        }
+    }
+    &-footer {
+        background-color: #F3F3F3;
+        .text {
+            font-size: 20px;
+            font-weight: 800;
+            text-align: center;
+            width: 50%;
+        }
+    }
+}

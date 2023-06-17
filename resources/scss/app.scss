@@ -1,0 +1,32 @@
+// variable
+@import './variables';
+
+// font family
+@import './font.scss';
+
+// font awesome
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import '@fortawesome/fontawesome-free/scss/regular.scss';
+
+// bootstrap
+@import 'bootstrap/scss/bootstrap.scss';
+
+// select2
+@import 'select2/src/scss/core.scss';
+
+// datatables
+@import 'datatables.net-bs/css/dataTables.bootstrap.min.css';
+
+// dateRangePicker
+@import 'daterangepicker/daterangepicker.css';
+
+// adminLTE
+// @import 'admin-lte/dist/css/adminlte.min.css';
+
+// common
+@import './common.scss';
+
+// layout
+@import './layouts/nav-left.scss';
+@import './layouts/nav-top.scss';

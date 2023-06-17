@@ -1,0 +1,14 @@
+nav.main-header {
+    border: unset;
+    ul.navbar-nav {
+        li.nav-item {
+            a.nav-link {
+                font-size: 0.9rem;
+                font-weight: 500;
+                padding: 0 .5rem;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}

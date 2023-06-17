@@ -1,0 +1,64 @@
+table > tbody > tr > td {
+    width: 50px !important;
+    vertical-align: middle !important;
+}
+
+.modal-detail {
+    max-width: 80%;
+}
+
+.my-td:hover {
+    background: #F6F3F3;
+    cursor: pointer;
+}
+
+.my-td {
+    border: 2px solid #6c757d !important;
+    min-width: 170px;
+    max-width: 200px !important;
+    height: 65px;
+}
+
+.table-scroll {
+    position: relative;
+    height: '100%';
+    overflow: auto;
+}
+.table-scroll-y {
+    display: block;
+}
+.btn-action {
+    position: relative;
+}
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.td-first {
+    border: 2px solid #6c757d !important;
+    font-size: 23px;
+    /*text-transform: uppercase;*/
+    /*min-width: 20% !important;*/
+}
+.table-warehouse thead {
+    display: none;
+}
+.my-btn {
+    width: 110px !important;
+    /*height: 65px;*/
+}
+.green {
+    background: #009787;
+}
+
+.yellow {
+    background: #ffc107;
+}
+
+.red {
+    background: #dc3545;
+}

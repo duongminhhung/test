@@ -1,0 +1,72 @@
+.card {
+  --scrollbarBG: #CFD8DC;
+  --thumbBG: #90A4AE;
+}
+
+.card-body::-webkit-scrollbar {
+  width: 11px;
+}
+
+.card-body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+
+.card-body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+
+.card-body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+.content-header {
+	padding-top: 0px !important;
+}
+
+.my-col {
+	padding: 0 !important;
+}
+.my-span {
+	font-weight: normal;
+	font-size: 12px;
+	margin: auto;
+}
+.bat-big {
+	border: 2px solid black;
+	border-radius: 3px;
+	/*width: 30px;
+	height: 15px;*/
+	width: 50px;
+	height: 24px;
+}
+.bat-small {
+	border: 2px solid black;
+	border-radius: 0 3px 3px 0;
+	/*margin-top: 3.5px;*/
+	/*width: 5px;
+	height: 9px;*/
+	margin-top: 3.5px;
+	width: 10px;
+	height: 16px;
+}
+.bat-ratio
+{
+	border: 1px solid rgb(255,5,5);
+	background: rgb(255,5,5);
+	margin: 1px;
+	position: relative;
+	/*width: 5px;
+	height: 9px;*/
+	width: 10px;
+	height: 18px;
+}
+.bat-text {
+	font-size: 7px;
+	font-weight: bold;
+	position: absolute;
+	text-align: center;
+	margin-left: 3px;
+	vertical-align: middle;
+}

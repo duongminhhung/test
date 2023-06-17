@@ -1,0 +1,61 @@
+.production-detail {
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 3px;
+    padding: 0.5rem;
+    height: 100%;
+    .card-percent {
+        text-align: center;
+        border-radius: 3px;
+        padding: 5px;
+        &[bg="green"] {
+            background-color: #20A551;
+        }
+        &[bg="orange"] {
+            background-color: #FCB73F;
+        }
+        &[bg="red"] {
+            background-color: #FB0D1B;
+        }
+        &[bg="gray"] {
+            background-color: gray;
+        }
+        .title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: white;
+            font-weight: 600;
+        }
+        .percent {
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+        .item {
+            border: 1px solid #C2C2C2;
+            padding: .25rem .5rem;
+            font-size: .85rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .title {
+            font-size: .85rem;
+            border: 1px solid #C2C2C2;
+            background-color: #EAEAEA;
+            padding: .25rem .5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.overwrite-tab {
+    padding: .25rem .5rem;
+}
